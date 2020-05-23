@@ -12,6 +12,8 @@ import Utilidades.Utilidades;
 import Utilidades.datosUsuario;
 import java.awt.Color;
 import java.awt.Desktop;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
@@ -35,9 +37,10 @@ public class VistaInicioSesion extends javax.swing.JFrame {
     private ArrayList<String[]> usuarios;
     private int indice;
     private VistaPrincipal vprin;
-    ControlUsuarios usuario; 
+    ControlUsuarios usuario;
     private int x, y;
     private final char MASCARA_CONTRASENIA = '●';
+    private int bandera;
 
     public VistaInicioSesion(/*VentanaPrincipal vprin*/) {
         initComponents();
@@ -51,6 +54,7 @@ public class VistaInicioSesion extends javax.swing.JFrame {
         vprin.setVisible(false);
         usuario = new ControlUsuarios();
         txtcontrasena.setText("12345");
+        bandera = 0;
     }
 
     /**
@@ -61,6 +65,7 @@ public class VistaInicioSesion extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -78,22 +83,21 @@ public class VistaInicioSesion extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         btnVerContrasenia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesión");
         setUndecorated(true);
-        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 123, 50)));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(59, 123, 50));
@@ -105,17 +109,41 @@ public class VistaInicioSesion extends javax.swing.JFrame {
                 jLabel3MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 190, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.ipadx = 39;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 90, 0, 0);
+        jPanel1.add(jLabel3, gridBagConstraints);
 
         lblmensaje.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lblmensaje.setForeground(new java.awt.Color(21, 67, 96));
         lblmensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(lblmensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 360, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.ipadx = 360;
+        gridBagConstraints.ipady = 50;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(14, 0, 20, 0);
+        jPanel1.add(lblmensaje, gridBagConstraints);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(59, 123, 50));
         jLabel1.setText("Nombre de usuario BIEN");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(86, 100, 0, 0);
+        jPanel1.add(jLabel1, gridBagConstraints);
 
         txtusuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtusuario.setForeground(new java.awt.Color(59, 123, 50));
@@ -131,12 +159,27 @@ public class VistaInicioSesion extends javax.swing.JFrame {
                 txtusuarioFocusLost(evt);
             }
         });
-        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 170, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.ipadx = 170;
+        gridBagConstraints.ipady = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 100, 0, 0);
+        jPanel1.add(txtusuario, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(59, 123, 50));
         jLabel2.setText("Contraseña");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 100, 0, 0);
+        jPanel1.add(jLabel2, gridBagConstraints);
 
         txtcontrasena.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtcontrasena.setForeground(new java.awt.Color(59, 123, 50));
@@ -156,16 +199,50 @@ public class VistaInicioSesion extends javax.swing.JFrame {
                 txtcontrasenaKeyReleased(evt);
             }
         });
-        jPanel1.add(txtcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 170, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 140;
+        gridBagConstraints.ipady = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 100, 0, 0);
+        jPanel1.add(txtcontrasena, gridBagConstraints);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/consultar.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(40, 120, 0, 0);
+        jPanel1.add(jLabel4, gridBagConstraints);
 
         jSeparator1.setForeground(new java.awt.Color(59, 123, 50));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 170, 10));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.ipadx = 169;
+        gridBagConstraints.ipady = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 100, 0, 0);
+        jPanel1.add(jSeparator1, gridBagConstraints);
 
         jSeparator2.setForeground(new java.awt.Color(59, 123, 50));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 170, 10));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.ipadx = 169;
+        gridBagConstraints.ipady = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 100, 0, 0);
+        jPanel1.add(jSeparator2, gridBagConstraints);
 
         jPanel2.setBackground(new java.awt.Color(59, 123, 50));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(59, 123, 50)));
@@ -201,7 +278,16 @@ public class VistaInicioSesion extends javax.swing.JFrame {
             .addComponent(btniniciarsesion, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 150, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.ipadx = 6;
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 120, 0, 0);
+        jPanel1.add(jPanel2, gridBagConstraints);
 
         jPanel3.setBackground(new java.awt.Color(59, 123, 50));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -214,7 +300,7 @@ public class VistaInicioSesion extends javax.swing.JFrame {
                 jPanel3MouseDragged(evt);
             }
         });
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.setLayout(new java.awt.GridBagLayout());
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/cerrar_1.png"))); // NOI18N
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -223,7 +309,14 @@ public class VistaInicioSesion extends javax.swing.JFrame {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 5, 30, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        jPanel3.add(jLabel5, gridBagConstraints);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/minimizar.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -232,14 +325,52 @@ public class VistaInicioSesion extends javax.swing.JFrame {
                 jLabel6MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 5, 30, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 138, 5, 0);
+        jPanel3.add(jLabel6, gridBagConstraints);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Iniciar Sesión");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(11, 10, 0, 0);
+        jPanel3.add(jLabel7, gridBagConstraints);
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 40));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/maximizar.png"))); // NOI18N
+        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        jPanel3.add(jLabel8, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel1.add(jPanel3, gridBagConstraints);
 
         btnVerContrasenia.setBackground(new java.awt.Color(255, 255, 255));
         btnVerContrasenia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/ver.png"))); // NOI18N
@@ -252,9 +383,26 @@ public class VistaInicioSesion extends javax.swing.JFrame {
                 btnVerContraseniaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVerContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 30, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = -1;
+        gridBagConstraints.ipady = -1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weighty = 1.0;
+        jPanel1.add(btnVerContrasenia, gridBagConstraints);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 510));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -355,11 +503,27 @@ public class VistaInicioSesion extends javax.swing.JFrame {
             estadoContrasenia = true;
             btnVerContrasenia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/verSlash.png")));
         } else { // Oculto los  caracteres
-            txtcontrasena.setEchoChar(MASCARA_CONTRASENIA);   
+            txtcontrasena.setEchoChar(MASCARA_CONTRASENIA);
             estadoContrasenia = false;
             btnVerContrasenia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/ver.png")));
         }
     }//GEN-LAST:event_btnVerContraseniaActionPerformed
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        String icono = "";
+
+        if (bandera == 0) {
+            this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            icono = "restaurar";
+            bandera = 1;
+        } else {
+            this.setExtendedState(JFrame.NORMAL);
+            icono = "maximizar";
+            bandera = 0;
+        }
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/" + icono + ".png")));
+    }//GEN-LAST:event_jLabel8MouseClicked
 
     /**
      * @param args the command line arguments
@@ -370,7 +534,7 @@ public class VistaInicioSesion extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -402,6 +566,7 @@ public class VistaInicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -433,19 +598,19 @@ public class VistaInicioSesion extends javax.swing.JFrame {
                 lblmensaje.setText("");
                 //            control.getUsuarios(usuarios.get(indice)[0]);---
 //                vprin.control = usuario.getUsuarios(usuarios.get(indice)[0]);  
-                datosUsuario.datos = usuario.getUsuarios(usuarios.get(indice)[0]); 
+                datosUsuario.datos = usuario.getUsuarios(usuarios.get(indice)[0]);
 //                vprin.passdin = usuarios.get(indice)[4]; 
                 this.dispose();
                 vprin.setVisible(true);
                 //vprin.IniciarComponentes();
-                
+
             }
         }
     }
 
     private void habilitarUnidadDeRed() {
         File unidadDeRed = new File("Y:\\");
-        
+
 //        if (!unidadDeRed.exists()) {   
 //            JOptionPane.showMessageDialog(this, "Verifique la conexion de la unidad de red Z:\\ y vuelva a iniciar la aplicación.");
 //            System.exit(0);
